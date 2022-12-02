@@ -1,4 +1,6 @@
-const sum = (a) => a.reduce((a, b) => a + b, 0);
+import { promises as fs } from "fs";
+
+import { sum } from "./funcs.mjs";
 
 function draw(symbol) {
   switch (symbol) {
@@ -50,10 +52,10 @@ function pick([me, opponent]) {
 function game(draws) {
   const scores = draws.split(" ").map(draw);
   //v1
-  //   const me = scores[1];
+  const me = scores[1];
 
   // v2
-  const me = pick(scores);
+  // const me = pick(scores);
   const opponent = scores[0];
 
   const diff = Math.abs(me - opponent);
@@ -70,9 +72,6 @@ function game(draws) {
   }
 }
 
-import("fs")
-  .then((fs) => fs.promises.readFile("./input.txt"))
-  .then((b) => b.toString().trim())
-  .then((s) => s.split("\n").map(game))
-  .then(sum)
-  .then(console.log);
+const raw = await fs.readFile("02.txt");
+
+console.log(sum(raw.toString().trim().split("\n").map(game)));
