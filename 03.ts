@@ -22,7 +22,7 @@ export function part1(input: string[]) {
 }
 
 export function part2(input: string[]) {
-  return sum([...chunks(input, 3)].map(compose(score, solveThreeOfTheSame)));
+  return sum(chunks(input, 3).map(compose(score, solveThreeOfTheSame)));
 }
 
 console.log("Part 1:", part1(readInputLines("03.txt")));

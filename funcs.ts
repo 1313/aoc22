@@ -7,10 +7,13 @@ export const intersect = <T>(...sets: Set<T>[]) =>
     return new Set([...intersected].filter((aEl) => currentSet.has(aEl)));
   }, sets[0]);
 
-export function* chunks<T>(a: T[], chunkSize: number) {
-  for (let i = 0; i < a.length; i += chunkSize) {
-    yield a.slice(i, i + chunkSize);
+export function chunks<T>(a: T[], chunkSize: number) {
+  function* generator() {
+    for (let i = 0; i < a.length; i += chunkSize) {
+      yield a.slice(i, i + chunkSize);
+    }
   }
+  return Array.from(generator());
 }
 
 export const readInput = (inputFile: string) =>
