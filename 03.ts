@@ -2,7 +2,7 @@ import { chunks, compose, intersect, readInputLines, sum } from "./funcs";
 
 export function solveFindDupe(backpack: string) {
   const pivot = backpack.length / 2;
-  const first = new Set(backpack.substring(0, backpack.length / 2));
+  const first = new Set(backpack.substring(0, pivot));
   const second = new Set(backpack.substring(pivot));
   const [dupe] = intersect(first, second);
   return dupe;
