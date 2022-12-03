@@ -1,7 +1,8 @@
-import { promises as fs } from "fs";
-import { max, sum } from "./funcs.mjs";
+import { readFile } from "fs/promises";
 
-const calories = await fs.readFile("./01.txt");
+import { max, sum } from "./funcs";
+
+const calories = await readFile("./01.txt");
 
 const m = calories
   .toString()

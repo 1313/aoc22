@@ -1,6 +1,6 @@
-import { promises as fs } from "fs";
+import { readFile } from "fs/promises";
 
-import { sum } from "./funcs.mjs";
+import { sum } from "./funcs";
 
 function draw(symbol) {
   switch (symbol) {
@@ -72,6 +72,6 @@ function game(draws) {
   }
 }
 
-const raw = await fs.readFile("02.txt");
+const raw = await readFile("02.txt");
 
 console.log(sum(raw.toString().trim().split("\n").map(game)));
