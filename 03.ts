@@ -25,5 +25,6 @@ export function part2(input: string[]) {
   return sum(chunks(input, 3).map(compose(score, solveThreeOfTheSame)));
 }
 
-console.log("Part 1:", part1(readInputLines("03.txt")));
-console.log("Part 2:", part2(readInputLines("03.txt")));
+const input = readInputLines("03.txt");
+console.log("Part 1:", part1(input));
+console.log("Part 2:", part2(input));
