@@ -18,8 +18,8 @@ const checkWithin = (fMin: number, fMax: number, sMin: number, sMax: number) =>
 const checkOverlap = (fMin: number, fMax: number, sMin: number, sMax: number) =>
   Number((fMin >= sMin && fMin <= sMax) || (sMin >= fMin && sMin <= fMax));
 
-const solveIsWithin = compose(apply(checkWithin), parseBadgeNumbers);
-const solveIsOverlap = compose(apply(checkOverlap), parseBadgeNumbers);
+export const solveIsWithin = compose(apply(checkWithin), parseBadgeNumbers);
+export const solveIsOverlap = compose(apply(checkOverlap), parseBadgeNumbers);
 
 export const part1 = compose(sum, map(solveIsWithin));
 export const part2 = compose(sum, map(solveIsOverlap));
