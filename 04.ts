@@ -1,31 +1,29 @@
 import {
   compose,
+  flat,
   map,
   readInputLines,
   split,
+  apply,
   stringToNumber,
   sum,
 } from "./funcs";
 
 const parseBadgeInterval = compose(map(stringToNumber), split("-"));
-const parseBadgeNumbers = compose(map(parseBadgeInterval), split(","));
+const parseBadgeNumbers = compose(flat, map(parseBadgeInterval), split(","));
 
-export function solveIsWithin(badgeIds: string): number {
-  const [[fMin, fMax], [sMin, sMax]] = parseBadgeNumbers(badgeIds);
-  return Number(
-    (fMin >= sMin && fMax <= sMax) || (sMin >= fMin && sMax <= fMax)
-  );
-}
+const checkWithin = (fMin: number, fMax: number, sMin: number, sMax: number) =>
+  Number((fMin >= sMin && fMax <= sMax) || (sMin >= fMin && sMax <= fMax));
 
-export function solveIsOverlap(badgeIds: string): number {
-  const [[fMin, fMax], [sMin, sMax]] = parseBadgeNumbers(badgeIds);
-  return Number(
-    (fMin >= sMin && fMin <= sMax) || (sMin >= fMin && sMin <= fMax)
-  );
-}
+const checkOverlap = (fMin: number, fMax: number, sMin: number, sMax: number) =>
+  Number((fMin >= sMin && fMin <= sMax) || (sMin >= fMin && sMin <= fMax));
+
+const solveIsWithin = compose(apply(checkWithin), parseBadgeNumbers);
+const solveIsOverlap = compose(apply(checkOverlap), parseBadgeNumbers);
 
 export const part1 = compose(sum, map(solveIsWithin));
 export const part2 = compose(sum, map(solveIsOverlap));
 
-console.log("Part 1:", part1(readInputLines("04.txt")));
-console.log("Part 2:", part2(readInputLines("04.txt")));
+const input = readInputLines("04.txt");
+console.log("Part 1:", part1(input));
+console.log("Part 2:", part2(input));
