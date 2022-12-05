@@ -1,4 +1,6 @@
 import fs from "fs";
+import { t } from "vitest/dist/index-9f5bc072";
+import { A } from "vitest/dist/types-de0e0997";
 
 export const sum = (a: number[]): number => a.reduce((a, b) => a + b, 0);
 export const max = (a) => a.reduce((a, b) => (a > b ? a : b), -Infinity);
@@ -26,8 +28,23 @@ export const map =
   (a: A[]) =>
     a.map(f);
 
-export const flat = <T>(a: T[][]): T[] => a.flat();
+export const filter =
+  <A>(f: (a: A) => boolean) =>
+  (a: A[]) =>
+    a.filter(f);
+export const transpose = <T>(matrix: T[][]) =>
+  matrix.reduce(
+    (prev, next) => next.map((_, i) => (prev[i] ?? []).concat(next[i])),
+    [[]] as T[][]
+  );
+export const exclude = (match: string) => filter<string>((e) => e !== match);
+export const flat = <T>(a: T[][] | T[]) => a.flat();
 
+export const match = (regex: RegExp) => (str: string) =>
+  str.match(regex) ?? ([] as string[]);
+
+export const replace = (regex: RegExp, replaceWith: string) => (str: string) =>
+  str.replace(regex, replaceWith);
 export const apply =
   <T, R>(f: (...args: T[]) => R) =>
   (a: T[]) =>
@@ -98,3 +115,17 @@ export function compose<A, B, C, D, E, F, G, H, I>(
 export function compose(...fns: any[]): any {
   return (initial: any) => fns.reduceRight((arg, fn) => fn(arg), initial);
 }
+
+export const dropAt =
+  <T>(position: number) =>
+  (a: T[]) => {
+    const n = [...a];
+
+    n.splice(position === -1 ? a.length - 1 : position, 1);
+    return n;
+  };
+
+export const take =
+  <T>(start: number, end: number = start + 1) =>
+  (a: T[]) =>
+    a.slice(start, end);
