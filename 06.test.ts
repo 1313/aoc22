@@ -10,6 +10,6 @@ const exampleData = {
 
 test("part 1 example data", () => {
   for (const [data, expected] of Object.entries(exampleData)) {
-    expect(findMarker(data)).toBe(expected);
+    expect(findMarker(data, 4)).toBe(expected);
   }
 });
