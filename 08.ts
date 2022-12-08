@@ -22,51 +22,51 @@ export function part2(forrest: number[][]): number {
 }
 
 export function scenicScore(
-  exampleData: number[][],
+  forrest: number[][],
   row: number,
   col: number
 ): number {
-  const cellValue = exampleData[row][col];
+  const cellValue = forrest[row][col];
 
   let scores: number[] = [0, 0, 0, 0];
 
   let below = row + 1;
-  while (exampleData[below]?.[col] < cellValue) {
+  while (forrest[below]?.[col] < cellValue) {
     below++;
     scores[0]++;
   }
 
-  if (exampleData[below]?.[col] !== undefined) {
+  if (forrest[below]?.[col] !== undefined) {
     scores[0]++;
   }
 
   let above = row - 1;
-  while (exampleData[above]?.[col] < cellValue) {
+  while (forrest[above]?.[col] < cellValue) {
     above--;
     scores[1]++;
   }
 
-  if (exampleData[above]?.[col] !== undefined) {
+  if (forrest[above]?.[col] !== undefined) {
     scores[1]++;
   }
 
   let left = col - 1;
-  while (exampleData[row]?.[left] < cellValue) {
+  while (forrest[row]?.[left] < cellValue) {
     left--;
     scores[2]++;
   }
 
-  if (exampleData[left]?.[col] !== undefined) {
+  if (forrest[left]?.[col] !== undefined) {
     scores[2]++;
   }
 
   let right = col + 1;
-  while (exampleData[row]?.[right] < cellValue) {
+  while (forrest[row]?.[right] < cellValue) {
     right++;
     scores[3]++;
   }
 
-  if (exampleData[right]?.[col] !== undefined) {
+  if (forrest[right]?.[col] !== undefined) {
     scores[3]++;
   }
 
@@ -74,13 +74,13 @@ export function scenicScore(
 }
 
 export function visibleTreesFrom(
-  exampleData: number[][],
+  forrest: number[][],
   row: number,
   col: number
 ): number {
-  const numRows = exampleData.length;
-  const numCols = exampleData[0].length;
-  const cellValue = exampleData[row][col];
+  const numRows = forrest.length;
+  const numCols = forrest[0].length;
+  const cellValue = forrest[row][col];
 
   let steps = 1;
 
@@ -90,14 +90,10 @@ export function visibleTreesFrom(
     let below = row + steps;
     let left = col - steps;
     let right = col + steps;
-    visibility[0] =
-      visibility[0] && cellValue > (exampleData[above]?.[col] ?? -1);
-    visibility[1] =
-      visibility[1] && cellValue > (exampleData[below]?.[col] ?? -1);
-    visibility[2] =
-      visibility[2] && cellValue > (exampleData[row]?.[left] ?? -1);
-    visibility[3] =
-      visibility[3] && cellValue > (exampleData[row]?.[right] ?? -1);
+    visibility[0] = visibility[0] && cellValue > (forrest[above]?.[col] ?? -1);
+    visibility[1] = visibility[1] && cellValue > (forrest[below]?.[col] ?? -1);
+    visibility[2] = visibility[2] && cellValue > (forrest[row]?.[left] ?? -1);
+    visibility[3] = visibility[3] && cellValue > (forrest[row]?.[right] ?? -1);
     steps++;
   }
 
