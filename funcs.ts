@@ -3,6 +3,7 @@ import { t } from "vitest/dist/index-9f5bc072";
 import { A } from "vitest/dist/types-de0e0997";
 
 export const sum = (a: number[]): number => a.reduce((a, b) => a + b, 0);
+export const product = (a: number[]): number => a.reduce((a, b) => a * b, 1);
 export const max = (a) => a.reduce((a, b) => (a > b ? a : b), -Infinity);
 
 export const intersect = <T>(...sets: Set<T>[]) =>
@@ -51,6 +52,8 @@ export const apply =
     f(...a);
 export const readInput = (inputFile: string) =>
   fs.readFileSync(inputFile, { encoding: "utf-8" });
+
+export const id = <T>(a: T) => a;
 
 export const splitInput = (input: string) =>
   input
