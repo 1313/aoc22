@@ -1,6 +1,6 @@
 import { readFile } from "fs/promises";
 
-import { sum } from "./funcs";
+import { readInputLines, sum } from "./funcs";
 
 function draw(symbol) {
   switch (symbol) {
@@ -49,15 +49,18 @@ function pick([me, opponent]) {
   throw Error("");
 }
 
-function game(draws) {
+export function part2(draws) {
   const scores = draws.split(" ").map(draw);
-  //v1
   const me = scores[1];
+  return game(me, pick(scores));
+}
+export function part1(draws) {
+  const [me, opponent] = draws.split(" ").map(draw);
 
-  // v2
-  // const me = pick(scores);
-  const opponent = scores[0];
+  return game(me, opponent);
+}
 
+function game(me, opponent) {
   const diff = Math.abs(me - opponent);
   const isDraw = diff === 0;
   const isWin =
@@ -72,6 +75,7 @@ function game(draws) {
   }
 }
 
-// const raw = await readFile("02.txt");
+const lines = readInputLines("02.txt");
 
-// console.log(sum(raw.toString().trim().split("\n").map(game)));
+console.log("Part 1:", sum(lines.map(part1)));
+console.log("Part 2:", sum(lines.map(part2)));

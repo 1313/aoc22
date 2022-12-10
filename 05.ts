@@ -77,6 +77,6 @@ export const part2 = (raw: string) => {
   return solveMoves(parseInitial(raw), parseMoveProcedures(raw), crane9001);
 };
 
-// const rawInput = readInput("05.txt");
-// console.log(part1(rawInput));
-// console.log(part2(rawInput));
+const rawInput = readInput("05.txt");
+console.log("Part 1:", part1(rawInput));
+console.log("Part 2:", part2(rawInput));
