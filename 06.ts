@@ -11,5 +11,5 @@ export function findMarker(signal: string, numDistinct: number): number {
 
 const [input] = readInputLines("06.txt");
 
-console.log("Part 1:", findMarker(input, 4));
-console.log("Part 2:", findMarker(input, 14));
+// console.log("Part 1:", findMarker(input, 4));
+// console.log("Part 2:", findMarker(input, 14));

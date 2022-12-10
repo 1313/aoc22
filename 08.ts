@@ -99,8 +99,8 @@ export function visibleTreesFrom(
 
   return visibility.some(id) ? 1 : 0;
 }
-const input = readInputLines("08.txt").map((line) =>
-  line.split("").map(Number)
-);
-console.log(part1(input));
-console.log(part2(input));
+// const input = readInputLines("08.txt").map((line) =>
+//   line.split("").map(Number)
+// );
+// console.log(part1(input));
+// console.log(part2(input));

@@ -24,6 +24,6 @@ export const solveIsOverlap = compose(apply(checkOverlap), parseBadgeNumbers);
 export const part1 = compose(sum, map(solveIsWithin));
 export const part2 = compose(sum, map(solveIsOverlap));
 
-const input = readInputLines("04.txt");
-console.log("Part 1:", part1(input));
-console.log("Part 2:", part2(input));
+// const input = readInputLines("04.txt");
+// console.log("Part 1:", part1(input));
+// console.log("Part 2:", part2(input));

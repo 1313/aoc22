@@ -1,10 +1,45 @@
 import fs from "fs";
-import { t } from "vitest/dist/index-9f5bc072";
-import { A } from "vitest/dist/types-de0e0997";
 
 export const sum = (a: number[]): number => a.reduce((a, b) => a + b, 0);
 export const product = (a: number[]): number => a.reduce((a, b) => a * b, 1);
 export const max = (a) => a.reduce((a, b) => (a > b ? a : b), -Infinity);
+
+export function addVector(
+  a: [number, number],
+  b: [number, number]
+): [number, number] {
+  return [a[0] + b[0], a[1] + b[1]];
+}
+
+export function subtractVector(
+  a: [number, number],
+  b: [number, number]
+): [number, number] {
+  return [a[0] - b[0], a[1] - b[1]];
+}
+export function distance(
+  a: [number, number],
+  b: [number, number]
+): [number, number] {
+  return [b[0] - a[0], b[1] - a[1]];
+}
+
+export function magnitude(d: [number, number]): number {
+  return Math.round(Math.sqrt(d[0] * d[0] + d[1] * d[1]));
+}
+
+export function direction(d: [number, number], m?: number): [number, number] {
+  m = m ?? magnitude(d);
+  const dir = m === 0 ? [0, 0] : [d[0] / m, d[1] / m];
+  return [
+    dir[0] === 0 ? 0 : dir[0] > 0 ? 1 : -1,
+    dir[1] === 0 ? 0 : dir[1] > 0 ? 1 : -1,
+  ];
+}
+
+export function scale(a: [number, number], scalar: number): [number, number] {
+  return [a[0] * scalar, a[1] * scalar];
+}
 
 export const intersect = <T>(...sets: Set<T>[]) =>
   sets.reduce((intersected: Set<T>, currentSet: Set<T>) => {

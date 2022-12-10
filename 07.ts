@@ -69,5 +69,5 @@ export const part2 = (instructions: string[]) => {
     }
   }
 };
-console.log("Part 1", part1(readInputLines("07.txt")));
-console.log("Part 2", part2(readInputLines("07.txt")));
+// console.log("Part 1", part1(readInputLines("07.txt")));
+// console.log("Part 2", part2(readInputLines("07.txt")));

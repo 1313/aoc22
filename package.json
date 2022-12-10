@@ -16,27 +16,11 @@
   "bugs": {
     "url": "https://github.com/1313/aoc22/issues"
   },
-  "quokka": {
-    "stdEsm": false,
-    "nativeEsm": true,
-    "env": {
-      "params": {
-        "runner": "--experimental-vm-modules"
-      }
-    }
-  },
-  "wallaby": {
-    "env": {
-      "params": {
-        "runner": "--experimental-vm-modules"
-      }
-    }
-  },
   "homepage": "https://github.com/1313/aoc22#readme",
   "devDependencies": {
     "@types/node": "18.11.12",
     "vite": "3.2.5",
     "vite-node": "0.25.6",
-    "vitest": "0.25.6"
+    "vitest": "0.25.4"
   }
 }

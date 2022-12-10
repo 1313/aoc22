@@ -72,6 +72,6 @@ function game(draws) {
   }
 }
 
-const raw = await readFile("02.txt");
+// const raw = await readFile("02.txt");
 
-console.log(sum(raw.toString().trim().split("\n").map(game)));
+// console.log(sum(raw.toString().trim().split("\n").map(game)));
